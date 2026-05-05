@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SEPM Interactive Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sb-logo">SEPM<span class="dot">.</span></div>
+  <nav class="sb-nav">
+    <a href="#home"    class="sb-link active" data-sec="home">🏠 Home</a>
+    <a href="#team"    class="sb-link" data-sec="team">👥 Team</a>
+    <a href="#unit1"   class="sb-link" data-sec="unit1">📘 Unit 1 – Intro to SE</a>
+    <a href="#unit2"   class="sb-link" data-sec="unit2">📗 Unit 2 – Requirements</a>
+    <a href="#unit3"   class="sb-link" data-sec="unit3">📙 Unit 3 – Design</a>
+    <a href="#unit4"   class="sb-link" data-sec="unit4">📕 Unit 4 – Construction</a>
+    <a href="#unit5"   class="sb-link" data-sec="unit5">📒 Unit 5 – Product Mgmt</a>
+  </nav>
+  <div class="sb-progress">
+    <div class="sp-label">Progress</div>
+    <div class="sp-bar"><div class="sp-fill" id="progressFill"></div></div>
+    <div class="sp-val" id="progressVal">0%</div>
+  </div>
+</aside>
+
+<!-- TOPBAR (mobile) -->
+<header class="topbar" id="topbar">
+  <button class="burger" id="burger">☰</button>
+  <span class="tb-title">SEPM Portfolio</span>
+</header>
+<div class="overlay" id="overlay"></div>
+
+<!-- MAIN -->
+<main class="main" id="main">
+
+<!-- ===== HOME ===== -->
+<section id="home" class="page active">
+  <div class="hero-wrap">
+    <div class="orb o1"></div><div class="orb o2"></div>
+    <div class="hero-text">
+      <div class="chip">📚 Software Engineering &amp; Project Management</div>
+      <h1>SEPM <span class="g">Interactive</span><br/>Learning Portfolio</h1>
+      <p>Explore all 5 units interactively — animate process models, run COCOMO calculations, view UML diagrams, flip flashcards, and build risk matrices.</p>
+      <div class="home-btns">
+        <button class="btn p" onclick="navigate('unit1')">Start Learning →</button>
+        <button class="btn o" onclick="navigate('team')">Meet the Team</button>
+      </div>
+    </div>
+    <div class="home-units">
+      <div class="hu-card" onclick="navigate('unit1')"><span>01</span><h4>Intro to SE</h4><p>Process models, SDLC, Agile, XP, Scrum</p></div>
+      <div class="hu-card" onclick="navigate('unit2')"><span>02</span><h4>Requirements</h4><p>SRS, COCOMO, Function Points</p></div>
+      <div class="hu-card" onclick="navigate('unit3')"><span>03</span><h4>Design</h4><p>UML, Architecture, GUI Design</p></div>
+      <div class="hu-card" onclick="navigate('unit4')"><span>04</span><h4>Construction</h4><p>Testing, Reviews, Debugging</p></div>
+      <div class="hu-card" onclick="navigate('unit5')"><span>05</span><h4>Product Mgmt</h4><p>Risk, RMMM, Maintenance</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section id="team" class="page">
+  <div class="page-header"><div class="pg-label">WHO WE ARE</div><h2>Meet the <span class="g">Team</span></h2></div>
+  <div class="team-grid">
+    <div class="team-card"><div class="av av1">AK</div><h3>Avanthika CK</h3><div class="roll">RA2312703010003</div><p>Units 1 &amp; 2 — Requirements Engineering, COCOMO models, Feasibility analysis</p><div class="unit-pills"><span>Unit 1</span><span>Unit 2</span></div></div>
+    <div class="team-card feat"><div class="star">★ Lead</div><div class="av av2">GK</div><h3>Gopika Krishna C</h3><div class="roll">RA2312703010005</div><p>Units 3 &amp; 4 — UML modeling, Architecture patterns, GUI design principles</p><div class="unit-pills"><span>Unit 3</span><span>Unit 4</span></div></div>
+    <div class="team-card"><div class="av av3">DM</div><h3>Dhivya Mohan</h3><div class="roll">RA2312703010015</div><p>Units 4 &amp; 5 — Testing strategies, Product release, RMMM planning</p><div class="unit-pills"><span>Unit 4</span><span>Unit 5</span></div></div>
+  </div>
+  <div class="dept-box">🎓 Department of Computer Science &amp; Engineering &nbsp;|&nbsp; Team Activity — SEPM</div>
+</section>
+
+<!-- ===== UNIT 1 ===== -->
+<section id="unit1" class="page">
+  <div class="page-header">
+    <div class="pg-label">UNIT 1 — 12 HOURS</div>
+    <h2>Introduction to <span class="g">Software Engineering</span></h2>
+    <div class="tab-bar">
+      <button class="tab active" data-tab="u1-models">Process Models</button>
+      <button class="tab" data-tab="u1-concepts">Key Concepts</button>
+      <button class="tab" data-tab="u1-quiz">Quiz</button>
+    </div>
+  </div>
+
+  <!-- Process Models Tab -->
+  <div class="tab-content active" id="u1-models">
+    <div class="model-selector">
+      <button class="ms-btn active" data-model="waterfall">🌊 Waterfall</button>
+      <button class="ms-btn" data-model="incremental">📈 Incremental</button>
+      <button class="ms-btn" data-model="spiral">🌀 Spiral</button>
+      <button class="ms-btn" data-model="agile">⚡ Agile/Scrum</button>
+      <button class="ms-btn" data-model="xp">🚀 XP</button>
+    </div>
+    <div class="model-display" id="modelDisplay"></div>
+    <div class="model-info" id="modelInfo"></div>
+  </div>
+
+  <!-- Concepts Tab -->
+  <div class="tab-content" id="u1-concepts">
+    <div class="concept-grid">
+      <div class="concept-card" onclick="toggleConcept(this)">
+        <div class="cc-front"><div class="cc-icon">🏗️</div><h4>Layered Technology</h4><p>Click to explore</p></div>
+        <div class="cc-back"><h4>SE as Layered Technology</h4><ul><li><strong>Quality</strong> — Foundation of all SE</li><li><strong>Process</strong> — Framework for project control</li><li><strong>Methods</strong> — How-to's for building software</li><li><strong>Tools</strong> — Automated support for process &amp; methods</li></ul></div>
+      </div>
+      <div class="concept-card" onclick="toggleConcept(this)">
+        <div class="cc-front"><div class="cc-icon">📋</div><h4>Project Charter</h4><p>Click to explore</p></div>
+        <div class="cc-back"><h4>Project Charter Elements</h4><ul><li>Project name &amp; objectives</li><li>Scope boundaries</li><li>Stakeholders &amp; roles</li><li>Timeline &amp; budget overview</li><li>High-level risks</li></ul></div>
+      </div>
+      <div class="concept-card" onclick="toggleConcept(this)">
+        <div class="cc-front"><div class="cc-icon">🔄</div><h4>Process Framework</h4><p>Click to explore</p></div>
+        <div class="cc-back"><h4>5 Framework Activities</h4><ul><li>Communication</li><li>Planning</li><li>Modeling</li><li>Construction</li><li>Deployment</li></ul></div>
+      </div>
+      <div class="concept-card" onclick="toggleConcept(this)">
+        <div class="cc-front"><div class="cc-icon">⚡</div><h4>Agile Manifesto</h4><p>Click to explore</p></div>
+        <div class="cc-back"><h4>4 Core Values</h4><ul><li>Individuals &amp; interactions over processes</li><li>Working software over documentation</li><li>Customer collaboration over contracts</li><li>Responding to change over plans</li></ul></div>
+      </div>
+    </div>
+    <!-- Scrum Board -->
+    <div class="scrum-section">
+      <h3>🏃 Interactive Scrum Board — Drag tickets between columns</h3>
+      <div class="scrum-board">
+        <div class="scrum-col" id="backlog" ondragover="event.preventDefault()" ondrop="dropCard(event,'backlog')">
+          <div class="scrum-col-title">📋 Backlog</div>
+          <div class="scrum-card" draggable="true" ondragstart="dragCard(event)">Define SRS</div>
+          <div class="scrum-card" draggable="true" ondragstart="dragCard(event)">UI Mockups</div>
+          <div class="scrum-card" draggable="true" ondragstart="dragCard(event)">Database Schema</div>
+        </div>
+        <div class="scrum-col" id="sprint" ondragover="event.preventDefault()" ondrop="dropCard(event,'sprint')">
+          <div class="scrum-col-title">🏃 In Sprint</div>
+          <div class="scrum-card" draggable="true" ondragstart="dragCard(event)">Login Module</div>
+        </div>
+        <div class="scrum-col" id="inprogress" ondragover="event.preventDefault()" ondrop="dropCard(event,'inprogress')">
+          <div class="scrum-col-title">⚙️ In Progress</div>
+        </div>
+        <div class="scrum-col" id="done" ondragover="event.preventDefault()" ondrop="dropCard(event,'done')">
+          <div class="scrum-col-title">✅ Done</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz Tab -->
+  <div class="tab-content" id="u1-quiz">
+    <div class="quiz-wrap" id="quiz-u1"></div>
+  </div>
+</section>
+
+<!-- ===== UNIT 2 ===== -->
+<section id="unit2" class="page">
+  <div class="page-header">
+    <div class="pg-label">UNIT 2 — 12 HOURS</div>
+    <h2>Software <span class="g">Requirements</span></h2>
+    <div class="tab-bar">
+      <button class="tab active" data-tab="u2-cocomo">COCOMO Calculator</button>
+      <button class="tab" data-tab="u2-req">Requirements Types</button>
+      <button class="tab" data-tab="u2-quiz">Quiz</button>
+    </div>
+  </div>
+
+  <!-- COCOMO Calculator -->
+  <div class="tab-content active" id="u2-cocomo">
+    <div class="calc-wrap">
+      <div class="calc-panel">
+        <h3>⚙️ COCOMO I Calculator</h3>
+        <div class="calc-group">
+          <label>Project Type</label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="ptype" value="organic" checked/> Organic</label>
+            <label class="radio-opt"><input type="radio" name="ptype" value="semidetached"/> Semi-detached</label>
+            <label class="radio-opt"><input type="radio" name="ptype" value="embedded"/> Embedded</label>
+          </div>
+        </div>
+        <div class="calc-group">
+          <label>Size (KLOC) <span class="hint">— Kilo Lines of Code</span></label>
+          <input type="range" id="klocRange" min="1" max="300" value="50" oninput="updateCocomo()"/>
+          <div class="range-val" id="klocVal">50 KLOC</div>
+        </div>
+        <button class="btn p" onclick="calcCocomo()">Calculate →</button>
+      </div>
+      <div class="calc-result" id="cocomoResult">
+        <div class="cr-empty">← Set parameters and click Calculate</div>
+      </div>
+    </div>
+    <!-- Function Points -->
+    <div class="fp-section">
+      <h3>📊 Function Point Counter</h3>
+      <p class="muted">Enter counts for each component type to compute Unadjusted Function Points (UFP)</p>
+      <div class="fp-grid">
+        <div class="fp-item"><label>External Inputs (EI)</label><input type="number" class="fp-in" id="fp-ei" value="5" min="0" oninput="calcFP()"/><span class="fp-weight">×4</span></div>
+        <div class="fp-item"><label>External Outputs (EO)</label><input type="number" class="fp-in" id="fp-eo" value="4" min="0" oninput="calcFP()"/><span class="fp-weight">×5</span></div>
+        <div class="fp-item"><label>External Inquiries (EQ)</label><input type="number" class="fp-in" id="fp-eq" value="3" min="0" oninput="calcFP()"/><span class="fp-weight">×4</span></div>
+        <div class="fp-item"><label>Internal Files (ILF)</label><input type="number" class="fp-in" id="fp-ilf" value="6" min="0" oninput="calcFP()"/><span class="fp-weight">×7</span></div>
+        <div class="fp-item"><label>External Interfaces (EIF)</label><input type="number" class="fp-in" id="fp-eif" value="2" min="0" oninput="calcFP()"/><span class="fp-weight">×5</span></div>
+      </div>
+      <div class="fp-result" id="fpResult"></div>
+    </div>
+  </div>
+
+  <!-- Requirements Types -->
+  <div class="tab-content" id="u2-req">
+    <div class="req-compare">
+      <div class="req-col">
+        <div class="req-col-title func">✅ Functional Requirements</div>
+        <div class="req-items" id="funcReqs">
+          <div class="req-item" onclick="toggleReq(this)">User can log in with email &amp; password</div>
+          <div class="req-item" onclick="toggleReq(this)">System generates monthly reports</div>
+          <div class="req-item" onclick="toggleReq(this)">Admin can add/remove users</div>
+          <div class="req-item" onclick="toggleReq(this)">System sends email notifications</div>
+        </div>
+        <button class="btn o sm" onclick="addReq('func')">+ Add Requirement</button>
+      </div>
+      <div class="req-col">
+        <div class="req-col-title nonfunc">⚙️ Non-Functional Requirements</div>
+        <div class="req-items" id="nonFuncReqs">
+          <div class="req-item" onclick="toggleReq(this)">System response time &lt; 2 seconds</div>
+          <div class="req-item" onclick="toggleReq(this)">99.9% uptime availability</div>
+          <div class="req-item" onclick="toggleReq(this)">Supports 10,000 concurrent users</div>
+          <div class="req-item" onclick="toggleReq(this)">Data encrypted with AES-256</div>
+        </div>
+        <button class="btn o sm" onclick="addReq('nonfunc')">+ Add Requirement</button>
+      </div>
+    </div>
+    <div class="srs-checklist">
+      <h3>📄 SRS Document Checklist</h3>
+      <div class="cl-grid" id="srsChecklist"></div>
+    </div>
+  </div>
+
+  <!-- Quiz -->
+  <div class="tab-content" id="u2-quiz">
+    <div class="quiz-wrap" id="quiz-u2"></div>
+  </div>
+</section>
+
+<!-- ===== UNIT 3 ===== -->
+<section id="unit3" class="page">
+  <div class="page-header">
+    <div class="pg-label">UNIT 3 — 12 HOURS</div>
+    <h2>Software <span class="g">Design</span></h2>
+    <div class="tab-bar">
+      <button class="tab active" data-tab="u3-uml">UML Diagrams</button>
+      <button class="tab" data-tab="u3-arch">Architecture</button>
+      <button class="tab" data-tab="u3-gui">GUI Design</button>
+      <button class="tab" data-tab="u3-quiz">Quiz</button>
+    </div>
+  </div>
+
+  <!-- UML -->
+  <div class="tab-content active" id="u3-uml">
+    <div class="uml-selector">
+      <button class="uml-btn active" data-uml="class">Class Diagram</button>
+      <button class="uml-btn" data-uml="usecase">Use Case</button>
+      <button class="uml-btn" data-uml="sequence">Sequence</button>
+      <button class="uml-btn" data-uml="component">Component</button>
+      <button class="uml-btn" data-uml="collab">Collaboration</button>
+    </div>
+    <div class="uml-viewer" id="umlViewer"></div>
+    <div class="uml-explain" id="umlExplain"></div>
+  </div>
+
+  <!-- Architecture -->
+  <div class="tab-content" id="u3-arch">
+    <div class="arch-selector">
+      <button class="arch-btn active" data-arch="layered">🏛️ Layered</button>
+      <button class="arch-btn" data-arch="client-server">💻 Client-Server</button>
+      <button class="arch-btn" data-arch="mvc">🔀 MVC</button>
+      <button class="arch-btn" data-arch="microservices">🧩 Microservices</button>
+      <button class="arch-btn" data-arch="pipe-filter">🔧 Pipe &amp; Filter</button>
+    </div>
+    <div class="arch-viewer" id="archViewer"></div>
+  </div>
+
+  <!-- GUI Design -->
+  <div class="tab-content" id="u3-gui">
+    <div class="gui-lab">
+      <h3>🖥️ GUI Design Lab — Explore UI Elements</h3>
+      <div class="gui-elements">
+        <div class="gui-el-card" onclick="showGuiInfo('menu')"><div class="gui-preview">☰ Menu</div><span>Menus</span></div>
+        <div class="gui-el-card" onclick="showGuiInfo('button')"><button class="demo-btn">Click Me</button><span>Buttons</span></div>
+        <div class="gui-el-card" onclick="showGuiInfo('scroll')"><div class="demo-scroll"><div class="demo-thumb"></div></div><span>Scrollbars</span></div>
+        <div class="gui-el-card" onclick="showGuiInfo('dialog')"><div class="demo-dialog">⚠ Dialog</div><span>Error Messages</span></div>
+        <div class="gui-el-card" onclick="showGuiInfo('icon')"><div class="demo-icons">🏠 📁 ⚙️ 🔍</div><span>Icons</span></div>
+        <div class="gui-el-card" onclick="showGuiInfo('panel')"><div class="demo-panel"><div></div><div></div><div></div></div><span>Panels</span></div>
+      </div>
+      <div class="gui-info-box" id="guiInfoBox"></div>
+    </div>
+    <div class="design-principles">
+      <h3>🎨 Principles of Good UI Design</h3>
+      <div class="principles-grid" id="principlesGrid"></div>
+    </div>
+  </div>
+
+  <!-- Quiz -->
+  <div class="tab-content" id="u3-quiz">
+    <div class="quiz-wrap" id="quiz-u3"></div>
+  </div>
+</section>
+
+<!-- ===== UNIT 4 ===== -->
+<section id="unit4" class="page">
+  <div class="page-header">
+    <div class="pg-label">UNIT 4 — 12 HOURS</div>
+    <h2>Software <span class="g">Construction</span></h2>
+    <div class="tab-bar">
+      <button class="tab active" data-tab="u4-testing">Testing Lab</button>
+      <button class="tab" data-tab="u4-reviews">Code Reviews</button>
+      <button class="tab" data-tab="u4-quiz">Quiz</button>
+    </div>
+  </div>
+
+  <!-- Testing Lab -->
+  <div class="tab-content active" id="u4-testing">
+    <div class="testing-compare">
+      <div class="test-box black-box" onclick="selectTest('bb')">
+        <div class="tb-icon">⬛</div>
+        <h4>Black-Box Testing</h4>
+        <p>Tests functionality without knowledge of internal code</p>
+        <div class="tb-badge">Input → Output</div>
+      </div>
+      <div class="vs-divider">VS</div>
+      <div class="test-box white-box" onclick="selectTest('wb')">
+        <div class="tb-icon">⬜</div>
+        <h4>White-Box Testing</h4>
+        <p>Tests internal structure, logic &amp; code paths</p>
+        <div class="tb-badge">Code Coverage</div>
+      </div>
+    </div>
+    <div class="test-detail" id="testDetail"></div>
+
+    <!-- Testing Pyramid Interactive -->
+    <h3 style="margin-top:2rem">🔺 Testing Pyramid — Click each layer</h3>
+    <div class="test-pyramid">
+      <div class="pyr-lyr e2e" onclick="showPyrInfo('e2e')">E2E / System Testing</div>
+      <div class="pyr-lyr integration" onclick="showPyrInfo('integration')">Integration Testing</div>
+      <div class="pyr-lyr unit" onclick="showPyrInfo('unit')">Unit Testing</div>
+    </div>
+    <div class="pyr-info" id="pyrInfo"></div>
+  </div>
+
+  <!-- Code Reviews -->
+  <div class="tab-content" id="u4-reviews">
+    <div class="review-tabs">
+      <button class="rv-btn active" data-rv="deskcheck">Deskcheck</button>
+      <button class="rv-btn" data-rv="walkthrough">Walkthrough</button>
+      <button class="rv-btn" data-rv="inspection">Inspection</button>
+      <button class="rv-btn" data-rv="codereview">Code Review</button>
+    </div>
+    <div class="review-content" id="reviewContent"></div>
+    <div class="coding-standards">
+      <h3>📝 Coding Standards Checklist</h3>
+      <div class="cs-list" id="csList"></div>
+    </div>
+  </div>
+
+  <!-- Quiz -->
+  <div class="tab-content" id="u4-quiz">
+    <div class="quiz-wrap" id="quiz-u4"></div>
+  </div>
+</section>
+
+<!-- ===== UNIT 5 ===== -->
+<section id="unit5" class="page">
+  <div class="page-header">
+    <div class="pg-label">UNIT 5 — 12 HOURS</div>
+    <h2>Product <span class="g">Management</span></h2>
+    <div class="tab-bar">
+      <button class="tab active" data-tab="u5-risk">Risk Matrix</button>
+      <button class="tab" data-tab="u5-rmmm">RMMM Builder</button>
+      <button class="tab" data-tab="u5-quiz">Quiz</button>
+    </div>
+  </div>
+
+  <!-- Risk Matrix -->
+  <div class="tab-content active" id="u5-risk">
+    <h3>⚠️ Interactive Risk Heat Map — Click a cell to add/view a risk</h3>
+    <div class="risk-matrix-wrap">
+      <div class="risk-axis-y"><span>High</span><span>Med</span><span>Low</span><br/><small>Probability</small></div>
+      <div>
+        <div class="risk-matrix" id="riskMatrix"></div>
+        <div class="risk-axis-x"><span>Low</span><span>Medium</span><span>High</span><br/><small>Impact</small></div>
+      </div>
+    </div>
+    <div class="risk-panel" id="riskPanel"></div>
+    <div class="risk-types-compare">
+      <h3>🎯 Risk Categories — Reactive vs Proactive</h3>
+      <div class="rp-grid">
+        <div class="rp-card reactive">
+          <h4>⚡ Reactive Strategy</h4>
+          <p>"Wait and fix" — Respond after the risk occurs</p>
+          <ul><li>Fire-fighting approach</li><li>Higher cost of resolution</li><li>Crisis management mode</li></ul>
+        </div>
+        <div class="rp-card proactive">
+          <h4>🛡️ Proactive Strategy</h4>
+          <p>"Plan ahead" — Identify and mitigate before occurrence</p>
+          <ul><li>Risk identification early</li><li>Risk projection &amp; refinement</li><li>RMMM plan creation</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RMMM Builder -->
+  <div class="tab-content" id="u5-rmmm">
+    <div class="rmmm-builder">
+      <h3>📋 RMMM Plan Builder</h3>
+      <p class="muted">Add risks and define Mitigation, Monitoring, and Management strategies</p>
+      <div class="rmmm-input-row">
+        <input type="text" id="riskName" placeholder="Risk description (e.g. Key developer leaves)"/>
+        <select id="riskCat">
+          <option value="project">Project Risk</option>
+          <option value="technical">Technical Risk</option>
+          <option value="business">Business Risk</option>
+        </select>
+        <select id="riskLikelihood">
+          <option value="low">Low Likelihood</option>
+          <option value="med">Med Likelihood</option>
+          <option value="high">High Likelihood</option>
+        </select>
+        <button class="btn p" onclick="addRisk()">+ Add Risk</button>
+      </div>
+      <table class="rmmm-table" id="rmmmTable">
+        <thead><tr><th>Risk</th><th>Category</th><th>Likelihood</th><th>Mitigation</th><th>Monitoring</th><th>Management</th><th></th></tr></thead>
+        <tbody id="rmmmBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Quiz -->
+  <div class="tab-content" id="u5-quiz">
+    <div class="quiz-wrap" id="quiz-u5"></div>
+  </div>
+</section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
